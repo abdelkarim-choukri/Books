@@ -1,0 +1,15 @@
+{% extends 'base.html'%} 
+{% load crispy_forms_tags book_extras%} 
+{% block title%}Delete Book{% endblock %} 
+{% block content %} 
+{% row "container" %}
+<h1>Delete Book</h1>
+<p>Are you sure you want to delete the book :"{{ book.title }}"?</p>
+<form method="post" >
+  {% csrf_token %}
+  <button class="btn btn-danger" type="submit">Delete</button>
+  <a class="btn btn-primary" href="{% url 'profile' %}">No</a>
+</form>
+
+{% endrow %} 
+{% endblock content %}

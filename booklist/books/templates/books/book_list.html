@@ -1,0 +1,34 @@
+
+{% extends "base.html" %}
+{% block content %}
+<!-- book_list.html -->
+<h1 class="text-center my-5">List of Books</h1>
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Author</th>
+      <th>Title</th>
+      <th>writer</th>
+      <th>Publication Date</th>
+      <th>File Size</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for book in books %}
+    <tr>
+      <td>{{ book.author}}</td>
+      <td><a href="{{ book.pdf.url }}" target="_blank">{{book.title}}</a></td>
+      <td>{{ book.writer }}</td>
+      <td>{{ book.publication_date|date:"d M Y" }}</td>
+      <td>{{ book.pdf.size|filesizeformat }}</td>
+    </tr>
+    {% empty %}
+    <tr>
+      <td colspan="6" class="text-center">No books available</td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>
+{% endblock %}
+
